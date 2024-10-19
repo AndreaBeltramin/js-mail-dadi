@@ -56,3 +56,65 @@ if (!isUserMailValid) {
 		alert("La mail inserita NON  è presente, NON puoi accedere");
 	}
 }
+
+/* //!APPROCCIO CORREZIONE 
+//!PREPARAZIONE
+//abbiamo una lista di mail
+const mail = [
+	"andrea@gmail.com",
+	"simone@gmail.com",
+	"luca@gmail.com",
+	"giacomo@libero.it",
+	"sofia@libero.it",
+	"lucia@libero.it",
+];
+
+//abbiamo uno stato/switch/una sentinella uguale a mail non trovata
+let isMailPresent = false;
+
+//!RACCOLTA DATI
+//chiedo all'utente la propria mail
+const userMail = prompt("Inserisci la tua mail per il login");
+
+//regola per validare una mail
+const regExpMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const isMailValid = userMail.match(regExpMail);
+
+//!SVOLGIMENTO CON FOR
+//per ogni mail nella lista
+for (let i = 0; i < mail.length; i++) {
+	//recupero la mail correttamente iterata della lista
+	const currentMail = mail[i];
+
+	//SE la mail dell'utente corrisponde con la mial corrente
+	if (currentMail === userMail) {
+		//setto lo stato uguale a mail trovata
+		isMailPresent = true;
+	}
+}
+
+/*
+//!altro procedimento (con WHILE)
+//per ogni mail nella lista finchè non trovo la mail 
+let i = 0;
+while (i < mail.length && !isMailPresent) {
+	//recupero la mail correttamente iterata della lista
+	const currentMail = mail[i];
+
+	//SE la mail dell'utente corrisponde con la mial corrente
+	if (currentMail === userMail) {
+		//setto lo stato uguale a mail trovata
+		isMailPresent = true;
+	}
+	i++;
+}
+
+//!OUTPUT
+//stampo un messaggio appropriato con un operatore ternario
+alert(
+	isMailValid
+		? "Benvenuto " + userMail
+		: "Acceso negato per questo indirizzo mail, riprova"
+);
+
+*/
